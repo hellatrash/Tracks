@@ -1,1 +1,187 @@
+litecli chinook.sqlite
+Version: 1.3.2
+Mail: https://groups.google.com/forum/#!forum/litecli-users
+GitHub: https://github.com/dbcli/litecli
 
+chinook.sqlite> .open chinook.sqlite                                                                                                                                             
+You are now connected to database "chinook.sqlite"
+Time: 0.003s
+
+chinook.sqlite> .tables                                                                                                                                                          
++---------------+
+| name          |
++---------------+
+| Album         |
+| Artist        |
+| Customer      |
+| Employee      |
+| Genre         |
+| Invoice       |
+| InvoiceLine   |
+| MediaType     |
+| Playlist      |
+| PlaylistTrack |
+| Track         |
++---------------+
+Time: 0.054s
+
+chinook.sqlite> select * from Genre                                                                                                                                              
++---------+--------------------+
+| GenreId | Name               |
++---------+--------------------+
+| 1       | Rock               |
+| 2       | Jazz               |
+| 3       | Metal              |
+| 4       | Alternative & Punk |
+| 5       | Rock And Roll      |
+| 6       | Blues              |
+| 7       | Latin              |
+| 8       | Reggae             |
+| 9       | Pop                |
+| 10      | Soundtrack         |
+| 11      | Bossa Nova         |
+| 12      | Easy Listening     |
+| 13      | Heavy Metal        |
+| 14      | R&B/Soul           |
+| 15      | Electronica/Dance  |
+| 16      | World              |
+| 17      | Hip Hop/Rap        |
+| 18      | Science Fiction    |
+| 19      | TV Shows           |
+| 20      | Sci Fi & Fantasy   |
+| 21      | Drama              |
+| 22      | Comedy             |
+| 23      | Alternative        |
+| 24      | Classical          |
+| 25      | Opera              |
++---------+--------------------+
+25 rows in set
+Time: 0.017s
+
+chinook.sqlite> selct "Rock" from Genre                                                                                                                                          
+near "selct": syntax error
+
+chinook.sqlite> select "Rock" from Genre                                                                                                                                         
++--------+
+| "Rock" |
++--------+
+| Rock   |
+| Rock   |
+| Rock   |
+| Rock   |
+| Rock   |
+| Rock   |
+| Rock   |
+| Rock   |
+| Rock   |
+| Rock   |
+| Rock   |
+| Rock   |
+| Rock   |
+| Rock   |
+| Rock   |
+| Rock   |
+| Rock   |
+| Rock   |
+| Rock   |
+| Rock   |
+| Rock   |
+| Rock   |
+| Rock   |
+| Rock   |
+| Rock   |
++--------+
+
+25 rows in set
+Time: 0.021s
+
+chinook.sqlite> coolz                                                                                                                                    
+near "coolz": syntax error
+
+chinook.sqlite> inser into track('name') values ('The Red Jumpsuit Apparatus')                                                                                                   
+near "inser": syntax error
+
+chinook.sqlite> insert into track('name') values ('The Red Jumpsuit Apparatus')                                                                                                  
+NOT NULL constraint failed: Track.MediaTypeId
+
+chinook.sqlite> Track.MediaTypeId                                                                                                                                                
+near "Track": syntax error
+
+chinook.sqlite> insert into Track.MediaTypeId                                                                                                                                    
+near "MediaTypeId": syntax error
+
+chinook.sqlite> insert into Track.MediaTypeId ('name') values ('The Red Jumpsuit Apparatus')                                                                                     
+no such table: Track.MediaTypeId
+
+chinook.sqlite> insert into track('name') values ('Artist', 'The Red Jumpsuit Apparatus')                                                                                        
+2 values for 1 columns
+
+chinook.sqlite> insert into Track('MediaTypeId', 'name')values ('Artist', 'The Red Jumpsuit Apparatus')                                                                          
+NOT NULL constraint failed: Track.Milliseconds
+
+chinook.sqlite> insert into Track('MediaTypeId', 'name', 'milliseconds')values ('Artist', 'The Red Jumpsuit Apparatus')                                                          
+2 values for 3 columns
+
+chinook.sqlite> insert into Track(MediatypeId * name) values ('Artist', 'The Red Jumpsuit Apparatus')                                                                            
+near "*": syntax error
+
+chinook.sqlite> insert into Track('MediaTypeId', 'name', 'milliseconds','Bytes') values ('3504', 'Artist', 'The Red Jumpsuit Apparatus')                                         
+3 values for 4 columns
+
+chinook.sqlite> insert into Track valueS( 'Artist', 'The Red Jumpsuit Apparatus')                                                                                                
+table Track has 9 columns but 2 values were supplied
+
+chinook.sqlite> insert into Track('MediaTypeId', 'name', 'milliseconds', 'composer') values ('3504', 'Artist', 'The Red Jumpsuit Apparatus')                                     
+3 values for 4 columns
+
+chinook.sqlite> insert into Track(mediatypeid, name) values ('Artist', 'The Red Jumpsuit Apparatus')                                                                             
+NOT NULL constraint failed: Track.Milliseconds
+
+chinook.sqlite> insert into Track(mediatypeid, name, composer)values ('3504', 'Artist', 'The Red Jumpsuit Apparatus')                                                            
+NOT NULL constraint failed: Track.Milliseconds
+
+chinook.sqlite> insert into Track(mediatypeid, name, composer, milliseconds, bytes) values (3504, 'Artist', 'TheRed Jumpsuit Apparatus', 203102)                                 
+4 values for 5 columns
+
+chinook.sqlite> insert into Track(mediatypeid, name, composer, milliseconds, bytes) values (3504, 'Artist', 'TheRed Jumpsuit Apparatus', 203102, 6713451)                        
+NOT NULL constraint failed: Track.UnitPrice
+
+chinook.sqlite> insert into Track(mediatypeid, name, composer, milliseconds, bytes, unitprice)values (3504, 'Artist', 'TheRed Jumpsuit Apparatus', 203102, 6713451, 0.99)        
+Query OK, 1 row affected
+Time: 0.102s
+
+chinook.sqlite> insert into Track(mediatypeid, name, composer, milliseconds, bytes, unitprice)values (3504, 'Track', "Face Down", 203102, 6713451, 0.99)                         
+Query OK, 1 row affected
+Time: 0.143s
+
+chinook.sqlite> git status                                                                                                                                                       
+near "git": syntax error
+
+chinook.sqlite> git push --set-upstream https://github.com/hellatrash/database.git                                                                                               
+near "git": syntax error
+
+chinook.sqlite> conn.commit()                                                                                                                                                    
+near "conn": syntax error
+
+chinook.sqlite> conn.close()                                                                                                                                                     
+near "conn": syntax error
+
+chinook.sqlite> conn.commit()                                                                                                                                                    
+near "conn": syntax error
+
+chinook.sqlite> git push https://github.com/hellatrash/database.git master                                                                                                       
+near "git": syntax error
+
+chinook.sqlite> git commit -m "Add data.sqlite"                                                                                                                                  
+near "git": syntax error
+
+chinook.sqlite> git commit -m add data.sqlite                                                                                                                                    
+near "git": syntax error
+
+chinook.sqlite> git remote add origin https://github.com/hellatrash/Tracks.git             
+near "git": syntax error
+
+chinook.sqlite> git push -u origin master                                                  
+near "git": syntax error
+
+chinook.sqlite>
